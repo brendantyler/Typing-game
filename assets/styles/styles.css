@@ -12,7 +12,7 @@
    }
 
 main {
-  height: 100vh
+  height: 100vh;
 }
 .container {
   height: 100vh;
@@ -22,6 +22,8 @@ main {
 }
 
 .gameHeader {
+  align-self: center;
+  position: absolute;
   margin-top: 4vh;
   text-align: center;
 }
@@ -33,26 +35,116 @@ main {
   justify-content: space-between;
 }
 
-.wordsTyped {
-  width: 60%;
+.scoreBoard {
+  margin-left: -30vh;
+  position: absolute;
+  text-align: center;
+  padding-right: 10vh;  width: 20%;
 }
 
-.scoreBoard {
-  text-align: center;
-  width: 20%;
+.footer {
+  background-color: #86f19f41;
+  overflow: hidden;
+  border-style: solid;
+  height: 25vh;
+  width: 100%;
+  position: absolute; bottom: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .playField {
+  width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
   padding-bottom: 3vh;
 }
 
+.wordsPerHour {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.speed{
+  margin-top: 2vh;
+}
+
 #typeHere {
-  border-style: solid;
   width: 50vh;
+  height: 5vh;
+  margin-top: 2vh;
+  font-size: larger;
   text-align: center;
+}
+
+.images {
+  height: 100%;
+  position: relative;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+
+.bg {
+  height: 100%;
+  width: 5000%;
+  background: url(../img/background/BG.png);
+  display: block;
+  position: absolute;
+  bottom: 0%;
+  left:-3vh;
+  background-repeat: repeat-x;
+  animation: backgroundMove 30s linear infinite;
+}
+
+.imgAni {
+  position: absolute;
+  width: 20vh;
+  margin-left: 10vh;
+  bottom: 50vh;
+  animation: anim 1500ms linear infinite;
+}
+
+.fuelBar {
+  background: rgb(36,0,0);
+  background: linear-gradient(90deg, rgb(155, 38, 38) 0%, rgb(238, 23, 37) 35%, rgba(255,0,0,1) 100%);
+  border-style: solid;
+  width: 80%;
+  padding-left: 3vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.fuelBar p {
+  color: rgb(245, 245, 245);
+}
+
+.hidden{
+  opacity: 0;
+}
+
+/*Movement*/
+.bgMove {
+  animation: backgroundMove 90s linear;
+}
+@keyframes backgroundMove {
+  100%{ transform: translateX(-500rem);}
+}
+
+
+@keyframes anim {
+  100%  {
+    transform: translateY(-1vh) 
+  }
+  50% {
+    transform: translateY(2vh);
+  }
+  0% {
+    transform: translateY(-1vh);
+  }
 }
 
 
