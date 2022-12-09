@@ -12,44 +12,55 @@
 <body>
   <main>
 
-    <div class="container">
+    <div class="container">      
+
+      <div class="images">
+
+        <div class="bg"></div>
+        
+        <div class="plane">
+          <img class="imgAni hide" src="./assets/img/avatar/Fly (1).png" >
+          <img class="imgAni" src="./assets/img/avatar/Fly (2).png" >
+        </div>
+
+        <div class="Lost hidden">
+          <img class="imgAni" src="./assets/img/avatar/Dead (1).png">
+        </div>
+
+      </div>
 
       <div class="gameHeader">
-        <h2>Super Type</h2>
-      <p>Type the words to speed up!</p>
+        <h2>Flight Typer</h2>
+      <p>Type the words as fast as you can to reach max speed!</p>
       </div>
 
-      <section class="footer">
-      <div class="playField">
-        <div class="wordsPerHour">
-          <div class="WPH">
-            Flight Speed: 0 WPH
+
+      <section class="footer">       
+        <div class="playField">
+          <div class="wordsPerHour">
+            <div class="progress">
+              Time Left 
+              <p class="timer">10s</p>
+            </div>
+            <div class="speed">
+              Flight Speed: 30 KM/H
+            </div>
+            <div class="score">
+              Score
+              <p class="scoreVal">0</p>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <input type="text" placeholder="start" name="WordInput" id="typeHere">
-        </div>
-      </div>      
-    
-    <div class="gameFooter">
-      <div class="wordsTyped">
-        <h4>Words Typed:</h4>
-        <p id="prevWords"></p>
-      </div>
 
-      <div class="scoreBoard">
-        <h4 class="scoreTitle">Top Scores</h4>
-        <ol id ="scoresList" >
-          <li>yes</li>
-          <li>yes</li>
-          <li>yes</li>
-          <li>yes</li>
-          <li>yes</li>
-        </ol>
-      </div>
-      </div>
-    </section>
+          <div>
+            <input type="text" placeholder="start" name="WordInput" id="typeHere">
+          </div>
+        </div>      
+        <div class="fuelBar">
+          <p> Fuel </p>
+
+        </div>
+      </section>
     </div>
 
 
