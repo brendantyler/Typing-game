@@ -1,0 +1,60 @@
+@import "./reset.css";
+
+
+:root {
+    --app-dark-bg: #1a1d28;
+    --app-red: #ff3c57;
+    --app-green: #33ab4e;
+    --app-purple: #833cff;
+    --app-orange: #ff833c;
+    --app-blue: #3c57ff;
+    --app-blue-hover: #364ee6;
+   }
+
+main {
+  height: 100vh
+}
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.gameHeader {
+  margin-top: 4vh;
+  text-align: center;
+}
+
+.gameFooter {
+  margin: 5vh;
+  margin-top: 2vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.wordsTyped {
+  width: 60%;
+}
+
+.scoreBoard {
+  text-align: center;
+  width: 20%;
+}
+
+.playField {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 3vh;
+}
+
+#typeHere {
+  border-style: solid;
+  width: 50vh;
+  text-align: center;
+}
+
+
+
+  
