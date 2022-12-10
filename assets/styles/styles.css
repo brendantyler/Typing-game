@@ -35,12 +35,106 @@ main {
   justify-content: space-between;
 }
 
-.scoreBoard {
-  margin-left: -30vh;
+#popupContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
   position: absolute;
-  text-align: center;
-  padding-right: 10vh;  width: 20%;
+  justify-content: center;
+  align-items: center;
 }
+
+#prepCount{
+  z-index: 2;
+  position: absolute;
+  border-radius: 1vh;
+  background-color: white;
+  width: 40vh;
+  height: 45vh;
+}
+
+.prepText h2{
+  text-align: center;
+  padding: 2vh;
+  font-size: 5vh;
+}
+
+.prepText p {
+  padding-left: 2vh;
+  padding-right: 2vh;
+  font-size: 3vh;
+  text-align: center;
+}
+
+#takeOffTimer {
+  font-size: 8vh;
+}
+
+#gameOver {
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+  position: absolute;
+  border-radius: 1vh;
+  background-color: white;
+  width: 40vh;
+  height: 45vh;
+  text-align: center;
+}
+
+#gameOver h3 {
+  padding-top: 1vh;
+}
+
+#gameOver ol {
+  padding-left: 6vh;
+  text-align: left;
+  font-size: 3vh;
+}
+
+#replayButton{
+border-radius: 1vh;
+background-color: var(--app-blue);
+color: white;
+width: 80%;
+margin-top: 1vh;
+padding: 2vh;
+font-size: 2vh;}
+
+#startGame {
+    z-index: 2;
+    position: absolute;
+    border-radius: 1vh;
+    background-color: white;
+    width: 40vh;
+    height: 45vh;
+}
+
+
+.startText h2{
+  text-align: center;
+  padding: 2vh;
+  font-size: 4vh;
+}
+
+.startText p {
+  padding-left: 2vh;
+  padding-right: 2vh;
+  font-size: 3vh;
+}
+
+#startButton {
+  border-radius: 1vh;
+  background-color: var(--app-blue);
+  color: white;
+  width: 80%;
+  margin-top: 4vh;
+  margin-left:4vh;
+  padding: 2vh;
+  font-size: 3vh;
+}
+  
+  
 
 .footer {
   background-color: #86f19f41;
@@ -60,7 +154,6 @@ main {
   margin-left: auto;
   position: absolute;
   align-self: center;
-  animation: hover 1300ms linear infinite;
 }
 .playField {
   width: 100%;
@@ -118,21 +211,27 @@ main {
 }
 
 .fuelBar {
-  background: rgb(36,0,0);
-  background: linear-gradient(90deg, rgb(155, 38, 38) 0%, rgb(238, 23, 37) 35%, rgba(255,0,0,1) 100%);
   border-style: solid;
   width: 80%;
-  padding-left: 3vh;
   margin-left: auto;
   margin-right: auto;
+  overflow-x: hidden;
 }
 
 .fuelBar p {
   color: rgb(245, 245, 245);
+  position: absolute;
 }
-
+.fuel{
+  height: 3.5vh;
+  width: 100%;
+  background: rgb(36,0,0);
+  background: linear-gradient(90deg, rgb(155, 38, 38) 0%, rgb(238, 23, 37) 35%, rgba(255,0,0,1) 100%);
+  padding-left: 5vh;
+  left: 0;
+}
 .hidden{
-  opacity: 0;
+  visibility: hidden;
 }
 
 /*Movement*/
@@ -143,6 +242,9 @@ main {
   100%{ transform: translateX(-500rem);}
 }
 
+.hoverAni {
+  animation: hover 1500ms linear infinite;
+}
 
 @keyframes hover {
   100%  {
@@ -155,7 +257,6 @@ main {
     transform: translateY(-1vh);
   }
 }
-
 
 
   
