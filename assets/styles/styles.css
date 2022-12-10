@@ -89,7 +89,11 @@ main {
 #gameOver ol {
   padding-left: 6vh;
   text-align: left;
-  font-size: 3vh;
+  font-size: 2vh;
+  margin-left: 2vh;
+  margin-bottom: 5vh;
+  columns: 2;
+    
 }
 
 #replayButton{
@@ -134,8 +138,6 @@ font-size: 2vh;}
   font-size: 3vh;
 }
   
-  
-
 .footer {
   background-color: #86f19f41;
   overflow: hidden;

@@ -1,7 +1,7 @@
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 'population', 'weather', 'bottle', 'history', 'dream', 'character', 'money', 'absolute', 'discipline', 'machine', 'accurate', 'connection', 'rainbow','bicycle', 'eclipse', 'calculator', 'trouble', 'watermelon', 'developer','philosophy', 'database', 'periodic', 'capitalism', 'abominable','component', 'future', 'pasta', 'microwave', 'jungle', 'wallet', 'canada','coffee', 'beauty', 'agency', 'chocolate', 'eleven', 'technology','alphabet', 'knowledge', 'magician', 'professor', 'triangle', 'earthquake', 'baseball', 'beyond', 'evolution', 'banana', 'perfumer', 'computer','management', 'discovery', 'ambition', 'music', 'eagle', 'crown','chess', 'laptop', 'bedroom', 'delivery', 'enemy', 'button','superman', 'library', 'unboxing', 'bookstore', 'language', 'homework', 'fantastic', 'economy', 'interview', 'awesome', 'challenge', 'science','mystery', 'famous', 'league', 'memory', 'leather', 'planet', 'software', 'update', 'yellow', 'keyboard', 'window'];
 
 let speed = 30;
-let time = 10;
+let time = 0;
 let scoreCount = 0;
 
 
@@ -11,6 +11,7 @@ let startCountdown = 3;
 let flightSpeed = document.getElementById('speedVal');
 let wordInput = document.getElementById("typeHere");
 let takeOffTimer = document.getElementById("takeOffTimer")
+let scoreList = document.getElementsByTagName('li')
 
 let prepPopup = document.getElementById("prepCount");
 let startPopup = document.getElementById("startGame");
@@ -29,32 +30,16 @@ let scoresArr = []
 replayButton.addEventListener('click', restart);
 startButton.addEventListener('click', start);
 
-function gameStart() { 
-  scoreCount = 0;
-  let timeInterval = setInterval(timer, 1000)
-
-  function timer(){  
-    if (time > 0) {
-      time --;
-    } else if (time == 0) {
-      clearInterval(timeInterval)      
-      gameEnd()
-    }
-    timeLeft.innerHTML = `${time}s`
-  }
-
-  console.log('Game Started');
-  timeLeft.innerHTML = `${time}s`
-  randomWord(words);
-  wordInput.addEventListener('input', wordTyped);
-  console.log(currentWord.innerHTML)
-}
 
 function start(){
+  getScoreLocal();
+
   startCountdown = 3;
-  time = 10;
+  time = 0;
   speed = 30;
   startPopup.classList.add('hidden');
+
+
   let interval = setInterval(startCount, 1000);
 
   function startCount(){
@@ -69,6 +54,26 @@ function start(){
   }
 }
 
+function gameStart() { 
+  scoreCount = 0;
+  let timeInterval = setInterval(timer, 1000)
+
+  function timer(){  
+    if (time > 0) {
+      time --;
+    } else if (time == 0) {
+      clearInterval(timeInterval)      
+      gameEnd()
+    }
+    timeLeft.innerHTML = `${time}s`
+  }
+
+  timeLeft.innerHTML = `${time}s`
+  randomWord(words);
+  wordInput.addEventListener('input', wordTyped);
+  console.log(currentWord.innerHTML)
+}
+
 function restart(){
   startCountdown = 3;
   takeOffTimer.innerHTML = `${startCountdown}`
@@ -77,19 +82,37 @@ function restart(){
   start()
 
   prepPopup.classList.remove('hidden');
+}
 
+/*Score Contructor */
+function Score(scoreCount, progress){
+  this.hits = scoreCount;
+  this.percentage = progress;
 }
 
 function gameEnd(){
-  let currentScore = new Score(`${scoreCount}`, `${progress}`);
-  console.log(currentScore)
+  let finalScore = new Score(`${scoreCount}`, `${progress}`);
+  scoresArr.push(finalScore)
 
+  setScoreLocal()
+  leaderBoard()
 
+  scoreCount = 0;
+  currentScore.innerText = scoreCount
+
+  currentWord.innerHTML = 'You W!ll Never Gue55'
+  wordInput.placeholder = "start"
+
+  roundScore.innerHTML = `Hits: ${finalScore.hits} Progress: ${finalScore.percentage}`
+  console.log(roundScore.innerHTML)
 
   endPopup.classList.remove('hidden')
-  scoreCount = 0;
-  currentScore.innerText = `${scoreCount}pts`
+}
 
+function leaderBoard(){
+  for (let i = 0; i < scoresArr.length; i++){
+    scoreList[i].innerHTML = `Hits:${scoresArr[i].hits} Prog: ${scoresArr[i].percentage}`
+  }
 }
 
 function wordTyped() {
@@ -110,11 +133,7 @@ function wordChecker() {
   }
 }
 
-function Score(scoreCount, progress ){
-  this.hits = scoreCount;
-  this.percentage = progress;
-}
-
+/*Not Implemented
 
 function changeSpeed() {
   switch(true){
@@ -122,9 +141,40 @@ function changeSpeed() {
     case score >= 30: speed = 30;
   }
 }
+*/
 
 function randomWord(words) {
   const iRandom = Math.floor(Math.random()*90);
   currentWord.innerHTML = words[iRandom];
   wordInput.placeholder = words[iRandom]
 }
+
+
+/* Add to localstorage */
+
+function sortSplice(scoresArr) {
+  scoresArr.sort((s1, s2) => s2.hits - s1.hits)
+  scoresArr.splice(5, 1);
+}
+
+
+
+function setScoreLocal(){
+
+  sortSplice(scoresArr);
+
+
+  localStorage.setItem("scores", JSON.stringify(scoresArr));
+}
+
+function getScoreLocal(){
+    if (scoresArr != 0) {
+      let localScore =  JSON.parse(localStorage.getItem("scores"));
+      let updateArr = [];
+      
+    for (let i = 0; i < localScore.length; i++){
+      updateArr.push(localScore[i]);
+      scoresArr = updateArr;
+    }
+  }
+} 
