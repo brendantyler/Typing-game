@@ -25,17 +25,29 @@ const currentWord = document.getElementById("currentWord");
 const startButton = document.getElementById("startButton");
 const replayButton = document.getElementById("replayButton");
 
-let scoresArr = []
+const scoresArr = [];
+const localScores = JSON.parse(localStorage.getItem('Score'))
+
+
 
 replayButton.addEventListener('click', restart);
 startButton.addEventListener('click', start);
 
 
 function start(){
-  getScoreLocal();
+  sortSplice(scoresArr)
+
+  if (localScores != null) {
+    for (let i = 0; i < localScores.length; i++)
+  scoresArr.push(localScores[i])
+  sortSplice(scoresArr)
+  }
+  
+  console.log(localScores)
+  console.log(scoresArr);
 
   startCountdown = 3;
-  time = 0;
+  time = 10;
   speed = 30;
   startPopup.classList.add('hidden');
 
@@ -91,10 +103,15 @@ function Score(scoreCount, progress){
 }
 
 function gameEnd(){
+  sortSplice(scoresArr)
+  console.log(localScores)
+  console.log(scoresArr);
+
+  leaderBoard()
   let finalScore = new Score(`${scoreCount}`, `${progress}`);
   scoresArr.push(finalScore)
 
-  setScoreLocal()
+  localStorage.setItem('Score', JSON.stringify(scoresArr))
   leaderBoard()
 
   scoreCount = 0;
@@ -110,6 +127,7 @@ function gameEnd(){
 }
 
 function leaderBoard(){
+  sortSplice(scoresArr)
   for (let i = 0; i < scoresArr.length; i++){
     scoreList[i].innerHTML = `Hits:${scoresArr[i].hits} Prog: ${scoresArr[i].percentage}`
   }
@@ -154,27 +172,15 @@ function randomWord(words) {
 
 function sortSplice(scoresArr) {
   scoresArr.sort((s1, s2) => s2.hits - s1.hits)
-  scoresArr.splice(5, 1);
+  scoresArr.splice(9, 100);
 }
 
+function mergeArrays(...arrays) {
+  let mergedArray = [];
 
+  arrays.forEach(array => {
+      mergedArray.push(...array)
+  });
 
-function setScoreLocal(){
-
-  sortSplice(scoresArr);
-
-
-  localStorage.setItem("scores", JSON.stringify(scoresArr));
+  return mergedArray
 }
-
-function getScoreLocal(){
-    if (scoresArr != 0) {
-      let localScore =  JSON.parse(localStorage.getItem("scores"));
-      let updateArr = [];
-      
-    for (let i = 0; i < localScore.length; i++){
-      updateArr.push(localScore[i]);
-      scoresArr = updateArr;
-    }
-  }
-} 
