@@ -35,12 +35,10 @@ startButton.addEventListener('click', start);
 
 
 function start(){
-  sortSplice(scoresArr)
 
   if (localScores != null) {
     for (let i = 0; i < localScores.length; i++)
   scoresArr.push(localScores[i])
-  sortSplice(scoresArr)
   }
   
   console.log(localScores)
@@ -169,17 +167,21 @@ function randomWord(words) {
 
 
 /* Add to localstorage */
+function sortSpliceLocal(localScores) {
+  localScores.sort((s1, s2) => s2.hits - s1.hits)
+  localScores.splice(9, 100);
+}
 
 function sortSplice(scoresArr) {
   scoresArr.sort((s1, s2) => s2.hits - s1.hits)
   scoresArr.splice(9, 100);
 }
 
-function mergeArrays(...arrays) {
+function mergeArrays(arrays) {
   let mergedArray = [];
 
   arrays.forEach(array => {
-      mergedArray.push(...array)
+      mergedArray.push(array)
   });
 
   return mergedArray
