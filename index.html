@@ -12,18 +12,55 @@
 <body>
   <main>
 
-    <div class="container">      
+    <div class="container">  
+    <div id="popupContainer">
 
-    <div id="currentWord">
+      <div id="gameOver" class="hidden">
+        <h2>GAME OVER</h2>
+        <div id="scoreBoard">
+          <h4 id="roundScore">Your Score:</h4>
+          <h3>LeaderBoard</h3>
+          <ol>
+            <li>Yes</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ol>
+          <button id="replayButton">Replay</button>
+        </div>
+      </div>
+
+      <div id="prepCount">
+      <div class="prepText">
+        <h2>GET READY</h2>
+        <p> Click the input bar and get ready for take off!
+          Takeoff Begins in:
+        </p>
+        <p id="takeOffTimer">3</p>
+      </div>
+      </div>
+
+      <div id="startGame">
+      <div class="startText">
+        <h2>FLIGHT TYPER</h2>
+        <p>In this game you will type the promted words as fast as you can to be the fastest pilot there is.</p>
+      </div>
+        <button id="startButton">Take Off</button>
+      </div> 
+    </div>   
+
+
+      <div class="hoverAni" id="currentWord">
       Current Word
-    </div>
+      </div>
 
       <div class="images">
         <div class="bg"></div>
 
         <div class="plane">
-          <img class="imgAni hide" src="./assets/img/avatar/Fly (1).png" >
-          <img class="imgAni" src="./assets/img/avatar/Fly (2).png" >
+          <img class="imgAni hoverAni" src="./assets/img/avatar/Fly (1).png" >
+          <img class="imgAni hoverAni" src="./assets/img/avatar/Fly (2).png" >
         </div>
 
         <div class="Lost hidden">
@@ -42,10 +79,10 @@
           <div class="wordsPerHour">
             <div class="progress">
               Time Left 
-              <p id="timeVal">10s</p>
+              <p id="timeVal">0s</p>
             </div>
             <div class="speed">
-              Flight Speed: 30 KM/H
+              <p id="speedVal">Flight Speed: 30 KM/H</p>
             </div>
             <div class="score">
               Score
@@ -59,8 +96,8 @@
           </div>
         </div>      
         <div class="fuelBar">
-          <p> Fuel </p>
-
+          <p>Fuel</p>
+          <div class="fuel " ></div>
         </div>
       </section>
     </div>
