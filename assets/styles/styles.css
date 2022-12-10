@@ -52,7 +52,16 @@ main {
   display: flex;
   flex-direction: column;
 }
-
+#currentWord {
+  z-index: 1;
+  bottom: 50%;
+  font-size: 5vh;
+  margin-right: auto;
+  margin-left: auto;
+  position: absolute;
+  align-self: center;
+  animation: hover 1300ms linear infinite;
+}
 .playField {
   width: 100%;
   display: flex;
@@ -103,9 +112,9 @@ main {
 .imgAni {
   position: absolute;
   width: 20vh;
-  margin-left: 10vh;
+  margin-left: 20vh;
   bottom: 50vh;
-  animation: anim 1500ms linear infinite;
+  animation: hover 1500ms linear infinite;
 }
 
 .fuelBar {
@@ -135,7 +144,7 @@ main {
 }
 
 
-@keyframes anim {
+@keyframes hover {
   100%  {
     transform: translateY(-1vh) 
   }
