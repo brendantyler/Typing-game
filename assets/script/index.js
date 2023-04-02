@@ -27,6 +27,7 @@ const replayButton = document.getElementById("replayButton");
 
 const scoresArr = [];
 const localScores = JSON.parse(localStorage.getItem('Score'))
+const fuelbar = document.getElementById("fuel")
 
 
 
@@ -45,7 +46,7 @@ function start(){
   console.log(scoresArr);
 
   startCountdown = 3;
-  time = 10;
+  time = 60;
   speed = 30;
   startPopup.classList.add('hidden');
 
@@ -66,13 +67,19 @@ function start(){
 
 function gameStart() { 
   scoreCount = 0;
+  progress = 0;
   let timeInterval = setInterval(timer, 1000)
+  let startTime = time;
 
   function timer(){  
     if (time > 0) {
       time --;
+      let timewidth = (time/startTime) * 100;
+      fuelbar.style.width = timewidth + "%";
+      colorPressure(timewidth)
     } else if (time == 0) {
       clearInterval(timeInterval)      
+      fuelbar.style.width = "0%";
       gameEnd()
     }
     timeLeft.innerHTML = `${time}s`
@@ -82,6 +89,16 @@ function gameStart() {
   randomWord(words);
   wordInput.addEventListener('input', wordTyped);
   console.log(currentWord.innerHTML)
+}
+
+function colorPressure(width){
+  if(width > 50){
+    fuelbar.style.background = "green";
+  } else if (width > 30) {
+    fuelbar.style.background = "yellow";
+  } else {
+    fuelbar.style.background = "red";
+  }
 }
 
 function restart(){
@@ -104,7 +121,8 @@ function gameEnd(){
   sortSplice(scoresArr)
   console.log(localScores)
   console.log(scoresArr);
-
+  
+  let progress = Math.round((scoreCount/words.length) *100);
   leaderBoard()
   let finalScore = new Score(`${scoreCount}`, `${progress}`);
   scoresArr.push(finalScore)
@@ -115,7 +133,7 @@ function gameEnd(){
   scoreCount = 0;
   currentScore.innerText = scoreCount
 
-  currentWord.innerHTML = 'You W!ll Never Gue55'
+  currentWord.innerHTML = "ss"
   wordInput.placeholder = "start"
 
   roundScore.innerHTML = `Hits: ${finalScore.hits} Progress: ${finalScore.percentage}`
@@ -169,12 +187,12 @@ function randomWord(words) {
 /* Add to localstorage */
 function sortSpliceLocal(localScores) {
   localScores.sort((s1, s2) => s2.hits - s1.hits)
-  localScores.splice(9, 100);
+  localScores.splice(5, 100);
 }
 
 function sortSplice(scoresArr) {
   scoresArr.sort((s1, s2) => s2.hits - s1.hits)
-  scoresArr.splice(9, 100);
+  scoresArr.splice(5, 100);
 }
 
 function mergeArrays(arrays) {

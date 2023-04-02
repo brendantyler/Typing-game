@@ -212,7 +212,7 @@ font-size: 2vh;}
   animation: hover 1500ms linear infinite;
 }
 
-.fuelBar {
+#fuelContainer {
   border-style: solid;
   width: 80%;
   margin-left: auto;
@@ -220,16 +220,15 @@ font-size: 2vh;}
   overflow-x: hidden;
 }
 
-.fuelBar p {
-  color: rgb(245, 245, 245);
+#fuelContainer p {
+  width: 80%;
+  color: rgb(0, 0, 0);
   position: absolute;
 }
-.fuel{
+#fuel{
   height: 3.5vh;
   width: 100%;
-  background: rgb(36,0,0);
-  background: linear-gradient(90deg, rgb(155, 38, 38) 0%, rgb(238, 23, 37) 35%, rgba(255,0,0,1) 100%);
-  padding-left: 5vh;
+  background: green;
   left: 0;
 }
 .hidden{
