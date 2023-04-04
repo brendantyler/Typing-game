@@ -45,8 +45,8 @@ function start(){
   console.log(localScores)
   console.log(scoresArr);
 
-  startCountdown = 1;
-  time = 0;
+  startCountdown = 3;
+  time = 30;
   speed = 30;
   startPopup.classList.add('hidden');
 
