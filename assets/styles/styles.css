@@ -241,7 +241,7 @@ font-size: 2vh;}
 
 /*Movement*/
 .bgMove {
-  animation: backgroundMove 90s linear;
+  animation: backgroundMove 500s linear;
 }
 @keyframes backgroundMove {
   100%{ transform: translateX(-500rem);}
