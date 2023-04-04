@@ -187,12 +187,12 @@ function randomWord(words) {
 /* Add to localstorage */
 function sortSpliceLocal(localScores) {
   localScores.sort((s1, s2) => s2.hits - s1.hits)
-  localScores.splice(5, 100);
+  localScores.splice(3, 100);
 }
 
 function sortSplice(scoresArr) {
   scoresArr.sort((s1, s2) => s2.hits - s1.hits)
-  scoresArr.splice(5, 100);
+  scoresArr.splice(3, 100);
 }
 
 function mergeArrays(arrays) {
