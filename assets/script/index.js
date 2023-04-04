@@ -136,7 +136,7 @@ function gameEnd(){
   currentWord.innerHTML = "ss"
   wordInput.placeholder = "start"
 
-  roundScore.innerHTML = `Hits: ${finalScore.hits} Progress: ${finalScore.percentage}`
+  roundScore.innerHTML = `Hits: ${finalScore.hits} Progress: ${finalScore.percentage} %`
   console.log(roundScore.innerHTML)
 
   endPopup.classList.remove('hidden')
@@ -145,7 +145,7 @@ function gameEnd(){
 function leaderBoard(){
   sortSplice(scoresArr)
   for (let i = 0; i < scoresArr.length; i++){
-    scoreList[i].innerHTML = `Hits:${scoresArr[i].hits} Prog: ${scoresArr[i].percentage}`
+    scoreList[i].innerHTML = `Hits:${scoresArr[i].hits} Prog: ${scoresArr[i].percentage} %`
   }
 }
 
